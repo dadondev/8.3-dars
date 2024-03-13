@@ -55,22 +55,6 @@ const Main = () => {
   const status: boolean = useSelector((state) => state.isLoading);
   const err: boolean = useSelector((s) => s.isError);
   const datas = useSelector((s) => s.data);
-  useEffect(() => {
-    ymaps.ready(init);
-    function init() {
-      // Создание карты.
-      const myMap = new ymaps.Map("map", {
-        // Координаты центра карты.
-        // Порядок по умолчанию: «широта, долгота».
-        // Чтобы не определять координаты центра карты вручную,
-        // воспользуйтесь инструментом Определение координат.
-        center: [55.76, 37.64],
-        // Уровень масштабирования. Допустимые значения:
-        // от 0 (весь мир) до 19.
-        zoom: 7,
-      });
-    }
-  }, []);
 
   return (
     <StyledMain>
@@ -92,7 +76,6 @@ const Main = () => {
       ) : (
         ""
       )}
-      <StyledYMap id="map"></StyledYMap>
     </StyledMain>
   );
 };
