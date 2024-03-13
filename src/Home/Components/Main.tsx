@@ -11,10 +11,10 @@ interface isErr {
 }
 
 interface data {
-  data?: object;
+  data?: dataT;
 }
 
-type datas = {
+type dataT = {
   ip?: string;
   location: {
     region?: string;
@@ -69,7 +69,14 @@ const Title = styled.h1`
 const Main = () => {
   const status = useSelector<state>((state) => state.isLoading);
   const err = useSelector<isErr>((s) => s.isError);
-  const datas: datas = useSelector<data>((s) => s.data);
+  const datas: {
+    ip?: string;
+    location: {
+      region?: string;
+      timezone?: string;
+    };
+    isp?: string;
+  } = useSelector((s: { data: dataT }) => s.data);
 
   return (
     <StyledMain>
