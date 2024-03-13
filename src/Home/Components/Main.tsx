@@ -2,6 +2,26 @@ import styled from "styled-components";
 import Card from "../../general/components/Card";
 import { useSelector } from "react-redux";
 
+interface state {
+  isLoading: any;
+}
+
+interface isErr {
+  isError?: boolean;
+}
+
+interface data {
+  data?: object;
+}
+
+type datas = {
+  ip?: string;
+  location: {
+    region?: string;
+    timezone?: string;
+  };
+  isp?: string;
+};
 
 const StyledMain = styled.main`
   position: relative;
@@ -46,12 +66,10 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-
-
 const Main = () => {
-  const status: boolean = useSelector((state) => state.isLoading);
-  const err: boolean = useSelector((s) => s.isError);
-  const datas = useSelector((s) => s.data);
+  const status = useSelector<state>((state) => state.isLoading);
+  const err = useSelector<isErr>((s) => s.isError);
+  const datas: datas = useSelector<data>((s) => s.data);
 
   return (
     <StyledMain>
