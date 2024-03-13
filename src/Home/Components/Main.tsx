@@ -15,6 +15,7 @@ const StyledMain = styled.main`
 const StyledDiv = styled.div`
   max-width: 300px;
   width: 100%;
+  z-index: 9999999;
   text-align: center;
   height: auto;
   position: absolute;
@@ -91,6 +92,7 @@ const Main = () => {
       ) : (
         ""
       )}
+      <StyledYMap id="map"></StyledYMap>
     </StyledMain>
   );
 };
