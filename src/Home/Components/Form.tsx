@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import tablet from "../../general/utils/tablet";
 import { useDispatch } from "react-redux";

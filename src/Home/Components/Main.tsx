@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Card from "../../general/components/Card";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+
 
 const StyledMain = styled.main`
   position: relative;
@@ -46,10 +46,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const StyledYMap = styled.div`
-  height: 100%;
-  max-width: 100%;
-`;
+
 
 const Main = () => {
   const status: boolean = useSelector((state) => state.isLoading);
