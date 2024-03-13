@@ -4,8 +4,8 @@ import Form from "./Form";
 const StyledHeader = styled.header`
   position: relative;
   padding: 26px 24px 0;
-  background-size: cover;
   background: url("/bg-image.png") no-repeat;
+  background-size: cover;
 `;
 const Title = styled.h1`
   color: #fff;

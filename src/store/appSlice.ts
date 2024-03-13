@@ -6,7 +6,7 @@ const appSlice = createSlice({
     isLoading: false,
     isError: false,
     data: null,
-  
+    lonLat: [],
   },
   reducers: {
     getError(state) {
@@ -15,6 +15,7 @@ const appSlice = createSlice({
     getData(state, { payload }) {
       state.isLoading = true;
       state.data = payload;
+
       state.isError = false;
       state.isLoading = false;
     },

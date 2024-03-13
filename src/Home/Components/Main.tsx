@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Card from "../../general/components/Card";
 import { useSelector } from "react-redux";
+import { useYMaps } from "@pbe/react-yandex-maps";
+import { useEffect, useRef } from "react";
 
 interface state {
   isLoading: any;
@@ -60,9 +62,22 @@ const StyledDiv = styled.div`
 
 const Title = styled.h1`
   text-align: center;
+  padding: 10px 20px;
+  background-color: white;
+  top: -10px;
+  position: absolute;
+  z-index: 1000000;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+const StyledMap = styled.div`
+  width: 100%;
+  min-height: 100%;
 `;
 
 const Main = () => {
+  const mapRef = useRef(null);
+  const ymaps = useYMaps(["Map"]);
   const status = useSelector<state>((state) => state.isLoading);
   const err = useSelector<isErr>((s) => s.isError);
   const datas: {
@@ -70,9 +85,22 @@ const Main = () => {
     location: {
       region?: string;
       timezone?: string;
+      lat?: number;
+      lng?: number;
     };
     isp?: string;
   } = useSelector((s: { data: dataT }) => s.data);
+
+  useEffect(() => {
+    if (!ymaps || !mapRef.current) {
+      return;
+    }
+
+    new ymaps.Map(mapRef.current, {
+      center: [41.311081, 69.240562],
+      zoom: 10,
+    });
+  }, [ymaps]);
 
   return (
     <StyledMain>
@@ -94,6 +122,7 @@ const Main = () => {
       ) : (
         ""
       )}
+      <StyledMap ref={mapRef}></StyledMap>
     </StyledMain>
   );
 };
