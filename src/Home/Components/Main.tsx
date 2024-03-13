@@ -10,10 +10,6 @@ interface isErr {
   isError?: boolean;
 }
 
-interface data {
-  data?: dataT;
-}
-
 type dataT = {
   ip?: string;
   location: {
